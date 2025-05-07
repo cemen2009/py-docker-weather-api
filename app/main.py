@@ -4,7 +4,6 @@ from weatherapi.rest import ApiException
 import os
 
 
-# API_KEY = c3ea938f5fb54de5bdc150328250705
 API_KEY = os.environ.get("API_KEY")
 QUERY = "Paris"
 DAYS = 1
