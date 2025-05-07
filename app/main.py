@@ -6,8 +6,9 @@ import os
 
 # API_KEY = c3ea938f5fb54de5bdc150328250705
 API_KEY = os.environ.get("API_KEY")
-Q = "Paris"
+QUERY = "Paris"
 DAYS = 1
+
 
 def get_weather() -> None:
     configuration = weatherapi.Configuration()
@@ -21,7 +22,7 @@ def get_weather() -> None:
 
     try:
         # forecast API
-        api_response = api_instance.forecast_weather(Q, DAYS)
+        api_response = api_instance.forecast_weather(QUERY, DAYS)
 
         current_weather = api_response.get("current", dict())
         location = api_response.get("location", dict())
@@ -30,10 +31,13 @@ def get_weather() -> None:
         country = location.get("country", "Unknown")
 
         update_date = current_weather.get("last_updated", "Unknown")
-        weather = (f"{current_weather.get('temp_c', 'Unknown')} Celsius, "
-                   f"{current_weather.get('condition', dict()).get('text', 'Unknown')}")
+        weather = (f"{current_weather.get("temp_c", "Unknown")} Celsius, "
+                   f"{current_weather.get("condition", dict())
+                   .get("text", "Unknown")}")
 
-        print(f"Performing request to Weather API for city {city}...\n{city}/{country} {update_date} Weather: {weather}")
+        print(f"Performing request to Weather API "
+              f"for city {city}...\n{city}/{country} "
+              f"{update_date} Weather: {weather}")
     except ApiException as e:
         print(f"Exception when calling APIsApi->forecast_weather: {e}")
 
