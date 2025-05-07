@@ -32,8 +32,10 @@ def get_weather() -> None:
 
         update_date = current_weather.get("last_updated", "Unknown")
         weather = (f"{current_weather.get("temp_c", "Unknown")} Celsius, "
-                   f"{current_weather.get("condition", dict())
-                   .get("text", "Unknown")}")
+                   f"{current_weather.get(
+                       "condition",
+                       dict()
+                   ).get("text", "Unknown")}")
 
         print(f"Performing request to Weather API "
               f"for city {city}...\n{city}/{country} "
