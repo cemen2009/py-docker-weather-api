@@ -31,7 +31,7 @@ def get_weather() -> None:
 
         update_date = current_weather.get("last_updated", "Unknown")
         weather = (f"{current_weather.get("temp_c", "Unknown")} Celsius, "
-                   f"{current_weather.get(
+                   f"{current_weather.get(  # noqa
                        "condition",
                        dict()
                    ).get("text", "Unknown")}")
